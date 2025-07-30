@@ -74,7 +74,7 @@ python devclean.py --path "/your/dir" --force --show-size --silent --log ./out.t
 
 Finally, re-run the dry run to confirm everything is cleaned up — it should report 0 bytes to delete.
 
-You can use `devclean-dryrun.sh` and `devclean-clean.sh` to run both the commands.
+You can use [`devclean-dryrun.sh`](./devclean-dryrun.sh) and [`devclean-clean.sh`](devclean-clean.sh) to run both the commands.
 
 ⚠️ Note: `--show-size` can slow things down on large directories. Use it based on your needs.
 
@@ -89,6 +89,13 @@ You can use `devclean-dryrun.sh` and `devclean-clean.sh` to run both the command
 | `--force`, `-f` | Delete without asking for confirmation |
 | `--show-size`, `-z` | Print total space that will be freed on deletion |
 
+## ⚠️ Disclaimer
+
+> **Use this tool at your own risk.**  
+> `devclean` is designed to delete commonly generated development folders (like `node_modules`, `dist`, `build`, etc.). While it aims to be safe, misconfiguration or misuse **can result in data loss**.  
+> Always use `--dry-run` mode first to preview what will be deleted.  
+> Double-check your paths before using `--force`.
+
 ## 📄 License
 
-MIT License
+This project is licensed under the [MIT License](./LICENSE).
