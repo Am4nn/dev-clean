@@ -45,6 +45,7 @@ def human_readable_size(size_bytes):
 def delete_deletable_dirs(base_path, dry_run=False, silent=False, log_path=None, force=False, show_size=False):
     deleted = []
     skipped = []
+    error = []
     total_size_bytes = 0
 
     for root, dirs, _ in os.walk(base_path, topdown=False):
@@ -78,6 +79,7 @@ def delete_deletable_dirs(base_path, dry_run=False, silent=False, log_path=None,
                         deleted.append(full_path)
                     except Exception as e:
                         print(Fore.RED + f"❌ Error deleting {full_path}: {e}")
+                        error.append(full_path)
 
     # Summary
     if dry_run:
@@ -97,6 +99,8 @@ def delete_deletable_dirs(base_path, dry_run=False, silent=False, log_path=None,
                 log_file.write(f"Deleted: {path}\n")
             for path in skipped:
                 log_file.write(f"Skipped: {path}\n")
+            for path in error:
+                log_file.write(f"Error: {path}\n")
             if show_size:
                 log_file.write(f"\nTotal size {'to be freed' if dry_run else 'freed'}: {human_readable_size(total_size_bytes)}\n")
         print(Fore.BLUE + f"\n📝 Log written to: {log_path}")
