@@ -74,6 +74,8 @@ python devclean.py --path "/your/dir" --force --show-size --silent --log ./out.t
 
 Finally, re-run the dry run to confirm everything is cleaned up — it should report 0 bytes to delete.
 
+You can use `devclean-dryrun.sh` and `devclean-clean.sh` to run both the commands.
+
 ⚠️ Note: `--show-size` can slow things down on large directories. Use it based on your needs.
 
 ## 🧰 Options
