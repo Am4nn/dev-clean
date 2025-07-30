@@ -20,7 +20,7 @@ PROTECTED_DIRS = {'.git', '.github', '.idea', '.vscode'}
 def should_delete(dirname):
     """Check if folder matches known deletable keywords"""
     name = dirname.lower()
-    return any(kw in name for kw in DELETE_KEYWORDS)
+    return name in DELETE_KEYWORDS
 
 def get_folder_size(path):
     """Calculate folder size in bytes (recursive)"""
